@@ -66,6 +66,25 @@
       }
     }
 
+  .popup-owner{
+  text-align:center;
+  font-family: Arial, sans-serif;
+  padding:5px;
+}
+
+.owner-title{
+  font-size:16px;
+  color:#555;
+  margin-bottom:6px;
+}
+
+.owner-name{
+  font-size:20px;
+  font-weight:bold;
+  color:#000;
+  line-height:1.4;
+}
+    
   </style>
 </head>
 
@@ -92,10 +111,18 @@
     attribution: '&copy; OpenStreetMap'
   }).addTo(map);
 
-  var marker = L.marker([latitude, longitude])
-    .addTo(map)
-.bindPopup("<b>Cibatu Tiga</b><br>Cariu, Bogor, Jawa Barat<br><br><b>Pemilik Tanah:</b><br>Sudianto Sunanto<br>Suryati Sunanto")
-    .openPopup();
+var marker = L.marker([latitude, longitude])
+  .addTo(map)
+  .bindPopup(`
+    <div class="popup-owner">
+      <div class="owner-title">Pemilik Tanah</div>
+      <div class="owner-name">
+        Sudianto Sunanto<br>
+        Suryati Sunanto
+      </div>
+    </div>
+  `)
+  .openPopup();
 
   function cariKoordinat() {
     var lat = parseFloat(document.getElementById("lat").value);
